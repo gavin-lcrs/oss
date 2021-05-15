@@ -41,9 +41,6 @@ public class OssServiceImpl implements OssService {
 
         String prefix = ObjectTypeEnums.getTypeCodeByKey(directory);
 
-
-
-
         log.info("简单列举文件");
 //        String KeyPrefix = "img";
         ObjectListing objectListing = ossClient.listObjects(bucketName, prefix);
