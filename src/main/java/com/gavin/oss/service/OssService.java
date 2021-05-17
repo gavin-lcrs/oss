@@ -17,7 +17,16 @@ public interface OssService {
      * @return
      */
     List<String> getObjUrlList(String point, String directory);
-    ObjectListVo getObjUrlNextList(String point, String prefix, String next, String maker);
+
+    /**
+     * 分页查询 节点 目录下文件列表
+     * @param point 节点
+     * @param prefix 目录
+     * @param next 下一个token
+     * @param after 下一个文件的文件名
+     * @return
+     */
+    ObjectListVo getObjUrlNextList(String point, String prefix, String next, String after);
 
 
 

@@ -54,14 +54,14 @@ public class OssServiceImpl implements OssService {
     }
 
     @Override
-    public ObjectListVo getObjUrlNextList(String point, String prefix, String next, String maker) {
+    public ObjectListVo getObjUrlNextList(String point, String prefix, String next, String after) {
         OSS ossClient = ClientUtils.getOssClient(point);
         String bucketName = EndPointEnums.getBucketNameByPoint(point);
         String endPoint = ClientUtils.getEndPoint(point);
         ListObjectsV2Request request = new ListObjectsV2Request (bucketName);
         request.setMaxKeys(maxKeys);
-        if (StringUtils.isNotBlank(maker)) {
-            request.setStartAfter(maker);
+        if (StringUtils.isNotBlank(after)) {
+            request.setStartAfter(after);
         } else if (StringUtils.isNotBlank(next)) {
             request.setContinuationToken(next);
         }
