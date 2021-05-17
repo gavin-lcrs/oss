@@ -6,10 +6,12 @@ import com.aliyun.oss.model.ListObjectsV2Request;
 import com.aliyun.oss.model.ListObjectsV2Result;
 import com.aliyun.oss.model.OSSObjectSummary;
 import com.aliyun.oss.model.ObjectListing;
-import com.gavin.oss.comment.ClientUtils;
-import com.gavin.oss.comment.OssUtils;
+import com.gavin.oss.common.ClientUtils;
+import com.gavin.oss.common.OssUtils;
+import com.gavin.oss.common.ResultMessage;
 import com.gavin.oss.enums.EndPointEnums;
 import com.gavin.oss.enums.ObjectTypeEnums;
+import com.gavin.oss.enums.ResultCode;
 import com.gavin.oss.model.ObjectInfoVo;
 import com.gavin.oss.model.ObjectListVo;
 import com.gavin.oss.service.OssService;
@@ -54,7 +56,14 @@ public class OssServiceImpl implements OssService {
     }
 
     @Override
-    public ObjectListVo getObjUrlNextList(String point, String prefix, String next, String after) {
+    public ResultMessage getObjUrlNextList(String point, String prefix, String next, String after) {
+        if (EndPointEnums.checkUnAvailable(point)) {
+            return ResultMessage.fail(ResultCode.POINT_ERROR);
+        }
+        if (StringUtils.isNotBlank(prefix) && ObjectTypeEnums.checkUnAvailable(prefix)) {
+            return ResultMessage.fail(ResultCode.PREFIX_ERROR);
+        }
+
         OSS ossClient = ClientUtils.getOssClient(point);
         String bucketName = EndPointEnums.getBucketNameByPoint(point);
         String endPoint = ClientUtils.getEndPoint(point);
@@ -102,7 +111,7 @@ public class OssServiceImpl implements OssService {
             // 关闭连接
             ossClient.shutdown();
         }
-        return vo;
+        return ResultMessage.success(vo);
     }
 
 

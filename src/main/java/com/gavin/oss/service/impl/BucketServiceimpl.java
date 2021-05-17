@@ -2,7 +2,7 @@ package com.gavin.oss.service.impl;
 
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.model.BucketInfo;
-import com.gavin.oss.comment.ClientUtils;
+import com.gavin.oss.common.ClientUtils;
 import com.gavin.oss.enums.EndPointEnums;
 import com.gavin.oss.service.BucketService;
 import lombok.extern.slf4j.Slf4j;

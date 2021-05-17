@@ -1,4 +1,4 @@
-package com.gavin.oss.comment;
+package com.gavin.oss.common;
 
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClientBuilder;

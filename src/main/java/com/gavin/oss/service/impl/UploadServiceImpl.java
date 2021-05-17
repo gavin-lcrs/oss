@@ -1,6 +1,6 @@
 package com.gavin.oss.service.impl;
 
-import com.gavin.oss.comment.OssUtils;
+import com.gavin.oss.common.OssUtils;
 import com.gavin.oss.service.UploadService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;

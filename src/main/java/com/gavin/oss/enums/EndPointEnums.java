@@ -30,4 +30,17 @@ public enum EndPointEnums {
             return null;
         }
     }
+
+    public static boolean checkAvailable(String point){
+        for (EndPointEnums pointEnums : EndPointEnums.values()) {
+            if (pointEnums.code.equals(point)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean checkUnAvailable(String point){
+        return !checkAvailable(point);
+    }
 }

@@ -1,5 +1,6 @@
 package com.gavin.oss.service;
 
+import com.gavin.oss.common.ResultMessage;
 import com.gavin.oss.model.ObjectListVo;
 
 import java.util.List;
@@ -26,7 +27,7 @@ public interface OssService {
      * @param after 下一个文件的文件名
      * @return
      */
-    ObjectListVo getObjUrlNextList(String point, String prefix, String next, String after);
+    ResultMessage getObjUrlNextList(String point, String prefix, String next, String after);
 
 
 

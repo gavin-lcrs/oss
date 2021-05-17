@@ -13,7 +13,8 @@ public enum ObjectTypeEnums {
     IMG("img","图片"),
     /** 文档 */
     DOC("doc","文档"),
-    OBJ("obj","文档"),
+    /** 对象文件 */
+    OBJ("obj","对象文件"),
     ;
 
     public String code;
@@ -43,5 +44,19 @@ public enum ObjectTypeEnums {
             }
         }
         return null;
+    }
+
+
+    public static boolean checkAvailable(String key){
+        for (ObjectTypeEnums typeEnums: ObjectTypeEnums.values()) {
+            if (typeEnums.code.equals(key)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean checkUnAvailable(String key){
+        return !checkAvailable(key);
     }
 }

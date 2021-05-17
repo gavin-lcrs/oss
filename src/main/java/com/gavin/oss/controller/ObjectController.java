@@ -1,5 +1,7 @@
 package com.gavin.oss.controller;
 
+import com.gavin.oss.common.ResultMessage;
+import com.gavin.oss.enums.ObjectTypeEnums;
 import com.gavin.oss.model.ObjectListVo;
 import com.gavin.oss.service.OssService;
 import io.lettuce.core.dynamic.annotation.Param;
@@ -45,8 +47,8 @@ public class ObjectController {
             @ApiImplicitParam(name = "after", value = "下一个文件的文件名", required = false, paramType = "query", dataType = "String")
     })
     @GetMapping("/{prefix}/{point}/list")
-    public ObjectListVo getObjNextList(@PathVariable("prefix") String prefix, @PathVariable("point") String point,
-                                       @Param("next") String next, @Param("after") String after) {
+    public ResultMessage getObjNextList(@PathVariable("prefix") String prefix, @PathVariable("point") String point,
+                                        @Param("next") String next, @Param("after") String after) {
         return ossService.getObjUrlNextList(point, prefix, next, after);
     }
 
