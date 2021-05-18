@@ -16,6 +16,7 @@ public enum ResultCode {
     POINT_ERROR("404","节点错误"),
     /** 前缀错误 */
     PREFIX_ERROR("404","前缀错误"),
+    DIRECTORY_NULL("404","前缀不能为空"),
     ;
 
     public String  code;

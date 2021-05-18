@@ -1,8 +1,6 @@
 package com.gavin.oss.controller;
 
 import com.gavin.oss.common.ResultMessage;
-import com.gavin.oss.enums.ObjectTypeEnums;
-import com.gavin.oss.model.ObjectListVo;
 import com.gavin.oss.service.OssService;
 import io.lettuce.core.dynamic.annotation.Param;
 import io.swagger.annotations.Api;
@@ -10,7 +8,6 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -51,6 +48,7 @@ public class ObjectController {
                                         @Param("next") String next, @Param("after") String after) {
         return ossService.getObjUrlNextList(point, prefix, next, after);
     }
+
 
 //    @RequestMapping("/img/{point}/list")
 //    public List<String> getImgList(@PathVariable("point") String point){

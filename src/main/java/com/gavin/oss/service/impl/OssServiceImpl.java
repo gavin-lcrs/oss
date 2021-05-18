@@ -107,13 +107,13 @@ public class OssServiceImpl implements OssService {
             vo.setList(list);
         } catch (Exception e) {
             log.error("查询oss列表异常", e);
+            return ResultMessage.fail("查询oss列表异常");
         } finally {
             // 关闭连接
             ossClient.shutdown();
         }
         return ResultMessage.success(vo);
     }
-
 
     @Override
     public void deleteObject(String point, String objName) {

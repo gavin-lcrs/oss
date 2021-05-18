@@ -40,6 +40,9 @@ public class ResultMessage<T> implements Serializable {
         return new ResultMessage<T>(ResultCode.SUCCESS.code, data);
     }
 
+    public static <T> ResultMessage<T> fail(){
+        return new ResultMessage<>(ResultCode.FAIL.code, ResultCode.FAIL.message);
+    }
     public static <T> ResultMessage<T> fail(String message){
         return new ResultMessage<>(ResultCode.FAIL.code, message);
     }
