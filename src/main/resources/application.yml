@@ -5,7 +5,6 @@ oss:
   accessKeyId: ${akid:yourAccessKeyId}
   accessKeySecret: ${aks:yourAccessKeySecret}
   endpoint:
-    sh: oss-cn-shanghai.aliyuncs.com
     hk: oss-cn-hongkong.aliyuncs.com
   firstKey:
   maxKeys: 10

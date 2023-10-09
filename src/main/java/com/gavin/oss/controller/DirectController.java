@@ -26,8 +26,14 @@ public class DirectController {
     }
 
     @PostMapping("/create")
-    public ResultMessage createObjDirect(@PathVariable("point") String point){
-        directService.createDirectory(point, "/obj/AAA");
+    public ResultMessage createObjDirect(@PathVariable("point") String point, @RequestBody String directory){
+        directService.createDirectory(point, directory);
+        return ResultMessage.success();
+    }
+
+    @DeleteMapping()
+    public ResultMessage deleteObjDirect(@PathVariable("point") String point, @RequestBody String directory){
+        directService.deleteDirectory(point, directory);
         return ResultMessage.success();
     }
 

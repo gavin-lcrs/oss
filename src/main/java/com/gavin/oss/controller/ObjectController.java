@@ -34,8 +34,8 @@ public class ObjectController {
     @ApiOperation(httpMethod = "GET", value = "获取节点文件URL列表", notes = "获取节点文件URL列表", produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiImplicitParam(paramType = "query", name = "point", value = "节点", required = true)
     @GetMapping("/{point}/list")
-    public List<String> getObjectList(@PathVariable("point") String point){
-        return ossService.getObjUrlList(point, null);
+    public List<String> getObjectList(@PathVariable("point") String point, @Param("directory") String directory){
+        return ossService.getObjUrlList(point, directory);
     }
 
     @ApiOperation(httpMethod = "GET", value = "查看type目录point节点文件列表", notes = "查看type目录point节点文件列表", produces = MediaType.APPLICATION_JSON_VALUE)

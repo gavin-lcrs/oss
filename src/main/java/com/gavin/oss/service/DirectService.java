@@ -12,4 +12,6 @@ public interface DirectService {
     ResultMessage getObjDirect(String point);
 
     ResultMessage createDirectory(String point, String directoryName);
+
+    ResultMessage deleteDirectory(String point, String directoryName);
 }

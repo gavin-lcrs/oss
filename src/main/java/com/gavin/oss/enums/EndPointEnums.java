@@ -1,34 +1,35 @@
 package com.gavin.oss.enums;
 
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * @Author Gavin
  * @Date 2021/4/19 0:34
  */
 public enum EndPointEnums {
-    /** 上海节点 */
-    SH("sh", "gavinimg",  "上海节点")
-    /** 香港节点 */,
-    HK("hk", "gavinhkimg", "香港节点"),
+    /** 香港节点 */
+    HK("hk", "lcrs-bucket", "香港节点"),
     ;
 
     public String code;
     public String bucket;
-    public String name;
+    public String desc;
 
-    EndPointEnums(String code, String bucket, String name) {
+    EndPointEnums(String code, String bucket, String desc) {
         this.code = code;
         this.bucket = bucket;
-        this.name = name;
+        this.desc = desc;
     }
 
     public static String getBucketNameByPoint(String point){
-        if (SH.code.equals(point)) {
-            return SH.bucket;
-        } else if (HK.code.equals(point)) {
-            return HK.bucket;
-        } else {
-            return null;
+        if (StringUtils.isNotBlank(point)) {
+            for (EndPointEnums pointEnums : EndPointEnums.values()) {
+                if (pointEnums.code.equals(point)) {
+                    return pointEnums.bucket;
+                }
+            }
         }
+        return null;
     }
 
     public static boolean checkAvailable(String point){

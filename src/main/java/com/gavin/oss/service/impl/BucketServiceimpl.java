@@ -2,6 +2,7 @@ package com.gavin.oss.service.impl;
 
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.model.BucketInfo;
+import com.aliyun.oss.model.BucketStat;
 import com.gavin.oss.common.ClientUtils;
 import com.gavin.oss.enums.EndPointEnums;
 import com.gavin.oss.service.BucketService;
@@ -24,6 +25,15 @@ public class BucketServiceimpl implements BucketService {
         BucketInfo info = ossClient.getBucketInfo(bucketName);
         ossClient.shutdown();
         return info;
+    }
+
+    @Override
+    public BucketStat getBucketStat(String point) {
+        OSS ossClient = ClientUtils.getOssClient(point);
+        String bucketName = EndPointEnums.getBucketNameByPoint(point);
+        BucketStat stat = ossClient.getBucketStat(bucketName);
+        ossClient.shutdown();
+        return stat;
     }
 
     @Override

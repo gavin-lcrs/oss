@@ -1,6 +1,7 @@
 package com.gavin.oss.controller;
 
 import com.aliyun.oss.model.BucketInfo;
+import com.aliyun.oss.model.BucketStat;
 import com.gavin.oss.service.BucketService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +22,14 @@ public class BucketController {
     @Autowired
     private BucketService bucketService;
 
-    @RequestMapping("/info/{point}")
+    @RequestMapping("/{point}/info")
     public BucketInfo getBucketInfo(@PathVariable("point") String point){
         return bucketService.getBucketInfo(point);
+    }
+
+    @RequestMapping("/{point}/stat")
+    public BucketStat getBucketStat(@PathVariable("point") String point){
+        return bucketService.getBucketStat(point);
     }
 
 }

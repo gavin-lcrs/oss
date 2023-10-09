@@ -12,16 +12,9 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class ClientUtils {
-
-    private static String shEndpoint;
     private static String hkEndpoint;
     private static String accessKeyId;
     private static String accessKeySecret;
-
-    @Value("${oss.endpoint.sh}")
-    public void setShEndpoint(String sh){
-        shEndpoint = sh;
-    }
 
     @Value("${oss.endpoint.hk}")
     public void setHkEndpoint(String hk){
@@ -44,9 +37,7 @@ public class ClientUtils {
 
     public static String getEndPoint(String point){
         String endPoint = null;
-        if (EndPointEnums.SH.code.equals(point)) {
-            endPoint = shEndpoint;
-        } else if (EndPointEnums.HK.code.equals(point)) {
+        if (EndPointEnums.HK.code.equals(point)) {
             endPoint = hkEndpoint;
         }
         return endPoint;
